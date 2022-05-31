@@ -92,7 +92,7 @@ class Figure:
         self.rotation = (self.rotation + 1) % len(self.figures[self.type])
 
 class Tetris:
-    level = 2
+    level = 1
     score = 0
     state = "start"
     field = []
@@ -159,6 +159,12 @@ class Tetris:
         self.figure.y -= 1
         self.freeze()
 
+    def go_up(self):
+     self.figure.y -= 1
+     if self.intersects():
+        self.figure.y += 1
+        self.freeze()
+
     def go_down(self):
         self.figure.y += 1
         if self.intersects():
@@ -199,15 +205,15 @@ class Tetris:
         # then that space is occupied by a shape.
 
         # This function tries to move pieces as far to the left as possible without overlapping.
-       
+       print()
         # Check down and to the left to see if its clear for an object
-        field_index_to_check_y = (self.figure.y + 1) % 20
-        field_index_to_check_x = (self.figure.x - 1) % 10
+        #field_index_to_check_y = (self.figure.y + 1) % 20
+        #field_index_to_check_x = (self.figure.x - 1) % 10
 
-        if(self.field[field_index_to_check_y][field_index_to_check_x] == 0):
-            self.go_side(-1)
-        else:
-            self.go_side(2)
+        #if(self.field[field_index_to_check_y][field_index_to_check_x] == 0):
+        #    self.go_side(-1)
+        #else:
+        #    self.go_side(2)
 
         #print("Do something based on the state here in state_evaluation")
 
@@ -258,8 +264,9 @@ last_figure_appearance = -1
 
 # If there aren't arguements just set the panel's name to 1
 if len(sys.argv) != 0:
-    pygame.display.set_caption("ARL A.I Tetris " + str(sys.argv[1]))
-    game_id = sys.argv[1]
+    #pygame.display.set_caption("ARL A.I Tetris " + str(sys.argv[1]))
+    #game_id = sys.argv[1]
+    print()
 else:
     pygame.display.set_caption("ARL A.I Tetris 1")
 
@@ -310,6 +317,10 @@ while not done:
                 last_move = "restart"
             if event.key == pygame.KSCAN_KP_ENTER:
                 game.encourage(1)
+            if event.key == pygame.K_UP:
+                game.go_up()
+            if event.key == pygame.K_f:
+                game.freeze()
             # Used number keys to switch panels if they exist
             if event.key == pygame.K_0:
                 Set_Focus("0")
