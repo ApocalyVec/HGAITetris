@@ -206,12 +206,12 @@ def GameStateEvaluation(game,events):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 #SAVE WEIGHTS & DATA
-                tamer.save_weights("model\\tamer" + str(game.gameid) + ".hdf5")
-                tamer.save_data("data\\dataRun" + str(game.gameid) + ".csv")
+                tamer.save_weights("model/tamer" + str(game.gameid) + ".hdf5")
+                tamer.save_data("data/dataRun" + str(game.gameid) + ".csv")
             
             if event.key == pygame.K_l:
                 #LOAD DATA & BATCH TRAIN
-                tamer.load_data("data\\")
+                tamer.load_data("data/")
             
             if event.key == pygame.K_b:
                 #BATCH DATA

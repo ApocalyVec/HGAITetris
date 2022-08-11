@@ -21,6 +21,6 @@ def StartGames():
         else:
             print("The program has detected that you are running Linux or Mac and will run the appropriate command to spool up Tetris games.")
             time.sleep(1)
-            subprocess.Popen("#!/usr/bin/env python Tetris.cpython-39.pyc " + str(Count) , shell=True)
+            subprocess.Popen("python Tetris.py " + str(Count) , shell=True)
 
 #StartGames()
