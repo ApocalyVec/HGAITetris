@@ -189,6 +189,7 @@ gameSym = None
 def GameStateEvaluation(game,events):
     global tamer
     global gameSym
+    global game_socket
         
     # GameState gives you access to the entire Tetris class and includes the field and all controls
     if tamer==None:
