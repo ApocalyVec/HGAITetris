@@ -150,8 +150,8 @@ class TetrisSym:
 
         coefficients = np.array([-0.5, 0.7, -0.35, 0.18])
         heuristics = np.array([aggregated_height, complete_lines, num_holes, bumpiness])
-        heuristics = (heuristics - np.min(heuristics)) / (np.max(heuristics) - np.min(heuristics))
         heuristics = heuristics * coefficients
+        heuristics = (heuristics - np.min(heuristics)) / (np.max(heuristics) - np.min(heuristics))
         return np.sum(heuristics)
 
     def getFeatures(self, board):

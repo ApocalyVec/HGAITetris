@@ -96,6 +96,10 @@ class Tamer2:
         else:
             if self.compiled == True:
                 pred_rewards = self.model.predict(ssfeats, verbose=0)  # batch predicting here
+                # normalize the predicted reward
+                pred_rewards_h = np.max(pred_rewards) - np.min(pred_rewards) if np.max(pred_rewards) != np.min(pred_rewards) else 1
+
+                pred_rewards = (pred_rewards - np.min(pred_rewards)) / pred_rewards_h
                 # add the heuristic reward
                 heuristic_rewards = [gameSym.get_heuristic_reward(x) for x in state1_feats]  # heuristic rewards for each of previous game state
                 heuristic_rewards = np.expand_dims(heuristic_rewards, axis=-1)
