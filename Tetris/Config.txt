@@ -1,5 +1,5 @@
 GameInstances
-10
+1
 GameSpeed
 25
 QueueSize
